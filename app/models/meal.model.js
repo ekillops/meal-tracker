@@ -1,18 +1,23 @@
 "use strict";
 var Meal = (function () {
     function Meal(newName, newDetails, newCalories) {
-        this._id = Meal.instances.length + 1;
+        this._id = Meal._instances.length + 1;
         this._name = newName;
         this._details = newDetails;
         this._calories = newCalories;
-        Meal.instances.push(this);
     }
     Meal.findById = function (targetId) {
-        return Meal.instances[targetId - 1];
+        return Meal._instances[targetId - 1];
     };
-    Meal.prototype.setId = function (newId) {
-        this._id = newId;
+    Meal.getAll = function () {
+        return Meal._instances;
     };
+    Meal.prototype.save = function () {
+        Meal._instances.push(this);
+    };
+    // public setId(newId: number): void {
+    //   this._id = newId;
+    // }
     Meal.prototype.getId = function () {
         return this._id;
     };
@@ -34,6 +39,7 @@ var Meal = (function () {
     Meal.prototype.getCalories = function () {
         return this._calories;
     };
+    Meal._instances = [];
     return Meal;
 }());
 exports.Meal = Meal;

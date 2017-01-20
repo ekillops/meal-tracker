@@ -8,23 +8,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var meal_model_1 = require('../models/meal.model');
+var core_1 = require("@angular/core");
+var meal_model_1 = require("../models/meal.model");
 var MealPageComponent = (function () {
     function MealPageComponent() {
     }
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', meal_model_1.Meal)
-    ], MealPageComponent.prototype, "thisMeal", void 0);
-    MealPageComponent = __decorate([
-        core_1.Component({
-            selector: 'meal-page',
-            template: "\n    <h3>{{thisMeal.getName()}}</h3>\n    <hr>\n    <p>Calories: <span>{{thisMeal.getCalories()}}</span></p>\n    <p>Notes: {{thisMeal.getDetails()}}</p>\n  "
-        }), 
-        __metadata('design:paramtypes', [])
-    ], MealPageComponent);
     return MealPageComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", meal_model_1.Meal)
+], MealPageComponent.prototype, "thisMeal", void 0);
+MealPageComponent = __decorate([
+    core_1.Component({
+        selector: 'meal-page',
+        template: "\n    <h4>{{thisMeal.getName()}}</h4>\n    <hr>\n    <p>Calories: <span>{{thisMeal.getCalories()}}</span></p>\n    <p>Notes: {{thisMeal.getDetails()}}</p>\n  "
+    })
+], MealPageComponent);
 exports.MealPageComponent = MealPageComponent;
 //# sourceMappingURL=meal-page.component.js.map

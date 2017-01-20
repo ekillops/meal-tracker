@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Meal } from '../models/meal.model';
 
 @Component({
@@ -14,11 +14,11 @@ import { Meal } from '../models/meal.model';
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let mealInstance of Meal.instances">
-          <tr>{{mealInstance.getName()}}</tr>
-          <tr>{{mealInstance.getDetails()}}</tr>
-          <tr>{{mealInstance.getCalories()}}</tr>
-          <tr><a (click)="viewMeal(mealInstance.getId())">View Meal</a></tr>
+        <tr *ngFor="let mealInstance of mealList">
+          <td>{{mealInstance.getName()}}</td>
+          <td>{{mealInstance.getDetails()}}</td>
+          <td>{{mealInstance.getCalories()}}</td>
+          <td><a (click)="viewMeal(mealInstance.getId())">View Meal</a></td>
         </tr>
       </tbody>
     </table>
@@ -26,6 +26,7 @@ import { Meal } from '../models/meal.model';
 })
 
 export class MealListComponent {
+  @Input() mealList: Array<Meal>;
   @Output() viewMealSender = new EventEmitter();
 
   viewMeal(mealId: number) {

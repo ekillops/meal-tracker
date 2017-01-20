@@ -17,13 +17,17 @@ var MealListComponent = (function () {
         this.viewMealSender.emit(mealId);
     };
     __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Array)
+    ], MealListComponent.prototype, "mealList", void 0);
+    __decorate([
         core_1.Output(), 
         __metadata('design:type', Object)
     ], MealListComponent.prototype, "viewMealSender", void 0);
     MealListComponent = __decorate([
         core_1.Component({
             selector: 'meal-list',
-            template: "\n    <table>\n      <thead>\n        <tr>\n          <th>Name</th>\n          <th>Details</th>\n          <th>Calories</th>\n          <th>View</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr *ngFor=\"let mealInstance of Meal.instances\">\n          <tr>{{mealInstance.getName()}}</tr>\n          <tr>{{mealInstance.getDetails()}}</tr>\n          <tr>{{mealInstance.getCalories()}}</tr>\n          <tr><a (click)=\"viewMeal(mealInstance.getId())\">View Meal</a></tr>\n        </tr>\n      </tbody>\n    </table>\n  "
+            template: "\n    <table>\n      <thead>\n        <tr>\n          <th>Name</th>\n          <th>Details</th>\n          <th>Calories</th>\n          <th>View</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr *ngFor=\"let mealInstance of mealList\">\n          <td>{{mealInstance.getName()}}</td>\n          <td>{{mealInstance.getDetails()}}</td>\n          <td>{{mealInstance.getCalories()}}</td>\n          <td><a (click)=\"viewMeal(mealInstance.getId())\">View Meal</a></td>\n        </tr>\n      </tbody>\n    </table>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], MealListComponent);

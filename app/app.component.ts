@@ -13,29 +13,51 @@ import { Meal } from './models/meal.model';
     </div>
   </nav>
   <div class="container">
-    <meal-list *ngIf="showMealList === true" (viewMealSender)="viewMealPage($event)"></meal-list>
-    <meal-page [thisMeal]="selectedMeal" *ngIf="showMealPage === true"></meal-page>
-    <new-meal (newMealSender)= "toggleShowNewMeal()" (cancelNewSender)="toggleShowNewMeal()"></new-meal>
+    <button class="btn blue darken-3" (click)="toggleShowNewMeal()">New Meal</button>
+    <button class="btn blue darken-3" (click)="toggleShowMealList()">Meal List</button>
+    <meal-list *ngIf="showMealList === true" [mealList]="allMeals" (viewMealSender)="viewMealPage($event)"></meal-list>
+    <meal-page *ngIf="showMealPage === true" [thisMeal]="selectedMeal"></meal-page>
+    <new-meal *ngIf="showNewMeal === true" (newMealSender)= "saveMeal($event)" (cancelNewSender)="toggleShowNewMeal()"></new-meal>
   </div>
   `
 })
 
 export class AppComponent {
-  selectedMeal: Meal;
+  allMeals: Array<Meal> = Meal.getAll();
+  selectedMeal: Meal = this.allMeals[0];
 
   showMealPage: boolean = false;
   showMealList: boolean = false;
   showNewMeal: boolean = false;
 
-  viewMealPage(targetId: number): void {
-    this.selectedMeal = Meal.findById(targetId);
+  saveMeal(sentMeal: Meal): void {
+    this.showNewMeal = false;
+    this.showMealPage = false;
 
+    sentMeal.save();
+    this.showMealList = true;
+  }
+
+  viewMealPage(targetId: number): void {
+    this.showNewMeal = false;
     this.showMealList = false;
+
+    this.selectedMeal = Meal.findById(targetId);
     this.showMealPage = true;
   }
 
   toggleShowNewMeal(): void {
+    this.showMealList = false;
+    this.showMealPage = false;
+
     this.showNewMeal = !this.showNewMeal;
+  }
+
+  toggleShowMealList(): void {
+    this.showMealPage = false;
+    this.showNewMeal = false;
+
+    this.showMealList = !this.showMealList;
   }
 
 

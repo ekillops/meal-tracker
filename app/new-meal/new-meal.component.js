@@ -16,8 +16,9 @@ var NewMealComponent = (function () {
         this.cancelNewSender = new core_1.EventEmitter();
     }
     NewMealComponent.prototype.submitForm = function (nameInput, detailsInput, caloriesInput) {
-        var newMeal = new meal_model_1.Meal(nameInput, detailsInput, parseInt(caloriesInput));
-        this.newMealSender.emit();
+        var parsedCalories = parseInt(caloriesInput) ? parseInt(caloriesInput) : 0;
+        var newMeal = new meal_model_1.Meal(nameInput, detailsInput, parsedCalories);
+        this.newMealSender.emit(newMeal);
     };
     NewMealComponent.prototype.cancelListener = function () {
         this.cancelNewSender.emit();
@@ -35,7 +36,7 @@ __decorate([
 NewMealComponent = __decorate([
     core_1.Component({
         selector: 'new-meal',
-        template: "\n  <h3>New Meal</h3>\n    <div class=\"input-field\">\n      <input #newName placeholder=\"Meal name\">\n    </div>\n    <div class=\"input-field\">\n      <input #newDetails placeholder=\"Details\">\n    </div>\n    <div class=\"input-field\">\n      <input #newCalories placeholder=\"Calories\">\n    </div>\n    <button class=\"blue darken-3 btn\" (click)=\"submitForm(newName.value, newDetails.value, newCalories.value); newName.value = ''; newDetails.value = ''; newCalories.value = '';\">Save</button>\n    <button class=\"blue darken-3 btn\"(click)=\"cancelListener()\">Cancel</button>\n  "
+        template: "\n  <h4>New Meal</h4>\n    <div class=\"input-field\">\n      <input #newName placeholder=\"Meal name\" required>\n    </div>\n    <div class=\"input-field\">\n      <input #newDetails placeholder=\"Details\">\n    </div>\n    <div class=\"input-field\">\n      <input #newCalories placeholder=\"Calories\">\n    </div>\n    <button class=\"blue darken-3 btn\" (click)=\"submitForm(newName.value, newDetails.value, newCalories.value); newName.value = ''; newDetails.value = ''; newCalories.value = '';\">Save</button>\n    <button class=\"blue darken-3 btn\"(click)=\"cancelListener()\">Cancel</button>\n  "
     })
 ], NewMealComponent);
 exports.NewMealComponent = NewMealComponent;

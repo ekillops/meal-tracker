@@ -4,7 +4,7 @@ import { Meal } from '../models/meal.model';
 @Component({
   selector: 'meal-page',
   template: `
-    <h3>{{thisMeal.getName()}}</h3>
+    <h4>{{thisMeal.getName()}}</h4>
     <hr>
     <p>Calories: <span>{{thisMeal.getCalories()}}</span></p>
     <p>Notes: {{thisMeal.getDetails()}}</p>

@@ -1,25 +1,33 @@
 export class Meal {
-  public static instances: Array<Meal>;
+  private static _instances: Array<Meal> = [];
   private _id: number;
   private _name: string;
   private _details: string;
   private _calories: number;
 
   constructor(newName: string, newDetails: string, newCalories: number){
-    this._id = Meal.instances.length + 1;
+    this._id = Meal._instances.length + 1;
     this._name = newName;
     this._details = newDetails;
     this._calories = newCalories;
-    Meal.instances.push(this);
   }
 
   public static findById(targetId: number): Meal {
-    return Meal.instances[targetId - 1];
+    return Meal._instances[targetId - 1];
   }
 
-  public setId(newId: number): void {
-    this._id = newId;
+  public static getAll(): Array<Meal> {
+    return Meal._instances;
   }
+
+  public save() {
+    Meal._instances.push(this);
+  }
+
+  // public setId(newId: number): void {
+  //   this._id = newId;
+  // }
+  
   public getId(): number {
     return this._id;
   }
