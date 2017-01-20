@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
+var core_1 = require('@angular/core');
 var MealListComponent = (function () {
     function MealListComponent() {
         this.viewMealSender = new core_1.EventEmitter();
@@ -16,17 +16,18 @@ var MealListComponent = (function () {
     MealListComponent.prototype.viewMeal = function (mealId) {
         this.viewMealSender.emit(mealId);
     };
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], MealListComponent.prototype, "viewMealSender", void 0);
+    MealListComponent = __decorate([
+        core_1.Component({
+            selector: 'meal-list',
+            template: "\n    <table>\n      <thead>\n        <tr>\n          <th>Name</th>\n          <th>Details</th>\n          <th>Calories</th>\n          <th>View</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr *ngFor=\"let mealInstance of Meal.instances\">\n          <tr>{{mealInstance.getName()}}</tr>\n          <tr>{{mealInstance.getDetails()}}</tr>\n          <tr>{{mealInstance.getCalories()}}</tr>\n          <tr><a (click)=\"viewMeal(mealInstance.getId())\">View Meal</a></tr>\n        </tr>\n      </tbody>\n    </table>\n  "
+        }), 
+        __metadata('design:paramtypes', [])
+    ], MealListComponent);
     return MealListComponent;
 }());
-__decorate([
-    core_1.Output(),
-    __metadata("design:type", Object)
-], MealListComponent.prototype, "viewMealSender", void 0);
-MealListComponent = __decorate([
-    core_1.Component({
-        selector: 'meal-list',
-        template: "\n    <table>\n      <thead>\n        <tr>\n          <th>Name</th>\n          <th>Details</th>\n          <th>Calories</th>\n          <th>View</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr *ngFor=\"let mealInstance of Meal.instances\">\n          <tr>{{mealInstance.getName()}}</tr>\n          <tr>{{mealInstance.getDetails()}}</tr>\n          <tr>{{mealInstance.getCalories()}}</tr>\n          <tr><a (click)=\"viewMeal(mealInstance.getId())\">View Meal</a></tr>\n        </tr>\n      </tbody>\n    </table>\n  "
-    })
-], MealListComponent);
 exports.MealListComponent = MealListComponent;
 //# sourceMappingURL=meal-list.component.js.map

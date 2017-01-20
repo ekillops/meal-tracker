@@ -5,6 +5,7 @@ export class Meal {
   private _details: string;
   private _calories: number;
 
+  //Default constructor
   constructor(newName: string, newDetails: string, newCalories: number){
     this._id = Meal.instances.length + 1;
     this._name = newName;
@@ -12,6 +13,7 @@ export class Meal {
     this._calories = newCalories;
     Meal.instances.push(this);
   }
+
 
   public static findById(targetId: number): Meal {
     return Meal.instances[targetId - 1];

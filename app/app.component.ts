@@ -14,6 +14,7 @@ import { Meal } from './models/meal.model';
   </nav>
   <div class="container">
     <meal-list *ngIf="showMealList === true" (viewMealSender)="viewMealPage($event)"></meal-list>
+    <meal-page [thisMeal]="selectedMeal" *ngIf="showMealPage === true"></meal-page>
   </div>
   `
 })
@@ -23,8 +24,9 @@ export class AppComponent {
 
   showMealPage: boolean = false;
   showMealList: boolean = false;
+  showMealForm: boolean = false;
 
-  viewMealPage(targetId: number) {
+  viewMealPage(targetId: number): void {
     this.selectedMeal = Meal.findById(targetId);
 
     this.showMealList = false;
