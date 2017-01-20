@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Meal } from './models/meal.model';
 
 @Component({
   selector: 'app-root',
@@ -12,11 +13,23 @@ import { FormGroup, FormControl } from '@angular/forms';
     </div>
   </nav>
   <div class="container">
-
+    <meal-list *ngIf="showMealList === true" (viewMealSender)="viewMealPage($event)"></meal-list>
   </div>
   `
 })
 
 export class AppComponent {
+  selectedMeal: Meal;
+
+  showMealPage: boolean = false;
+  showMealList: boolean = false;
+
+  viewMealPage(targetId: number) {
+    this.selectedMeal = Meal.findById(targetId);
+
+    this.showMealList = false;
+    this.showMealPage = true;
+  }
+
 
 }

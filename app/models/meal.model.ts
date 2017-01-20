@@ -13,6 +13,17 @@ export class Meal {
     Meal.instances.push(this);
   }
 
+  public static findById(targetId: number): Meal {
+    return Meal.instances[targetId - 1];
+  }
+
+  public setId(newId: number): void {
+    this._id = newId;
+  }
+  public getId(): number {
+    return this._id;
+  }
+
   public setName(newName: string): void {
     this._name = newName;
   }
