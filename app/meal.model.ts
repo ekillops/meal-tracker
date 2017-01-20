@@ -1,12 +1,16 @@
 export class Meal {
+  public static instances: Array<Meal>;
+  private _id: number;
   private _name: string;
   private _details: string;
   private _calories: number;
 
   constructor(newName: string, newDetails: string, newCalories: number){
+    this._id = Meal.instances.length + 1;
     this._name = newName;
     this._details = newDetails;
     this._calories = newCalories;
+    Meal.instances.push(this);
   }
 
   public setName(newName: string): void {
