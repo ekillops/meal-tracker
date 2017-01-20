@@ -1,6 +1,5 @@
 "use strict";
 var Meal = (function () {
-    //Default constructor
     function Meal(newName, newDetails, newCalories) {
         this._id = Meal.instances.length + 1;
         this._name = newName;
