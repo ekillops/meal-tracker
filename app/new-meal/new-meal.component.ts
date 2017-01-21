@@ -12,7 +12,7 @@ import { Meal } from '../models/meal.model';
       <input #newDetails placeholder="Details">
     </div>
     <div class="input-field">
-      <input #newCalories placeholder="Calories">
+      <input type="number" #newCalories placeholder="Calories">
     </div>
     <button class="blue darken-3 btn" (click)="submitForm(newName.value, newDetails.value, newCalories.value); newName.value = ''; newDetails.value = ''; newCalories.value = '';">Save</button>
     <button class="blue darken-3 btn"(click)="cancelListener()">Cancel</button>

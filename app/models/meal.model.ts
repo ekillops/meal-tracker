@@ -1,4 +1,5 @@
 export class Meal {
+  private static _idCounter: number = 1;
   private static _instances: Array<Meal> = [];
   private _id: number;
   private _name: string;
@@ -6,10 +7,11 @@ export class Meal {
   private _calories: number;
 
   constructor(newName: string, newDetails: string, newCalories: number){
-    this._id = Meal._instances.length + 1;
+    this._id = Meal._idCounter;
     this._name = newName;
     this._details = newDetails;
     this._calories = newCalories;
+    Meal._idCounter++;
   }
 
   public static findById(targetId: number): Meal {
@@ -27,7 +29,7 @@ export class Meal {
   // public setId(newId: number): void {
   //   this._id = newId;
   // }
-  
+
   public getId(): number {
     return this._id;
   }

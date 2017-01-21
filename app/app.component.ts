@@ -13,10 +13,11 @@ import { Meal } from './models/meal.model';
     </div>
   </nav>
   <div class="container">
+    <br>
     <button class="btn blue darken-3" (click)="toggleShowNewMeal()">New Meal</button>
     <button class="btn blue darken-3" (click)="toggleShowMealList()">Meal List</button>
     <meal-list *ngIf="showMealList === true" [mealList]="allMeals" (viewMealSender)="viewMealPage($event)"></meal-list>
-    <meal-page *ngIf="showMealPage === true" [thisMeal]="selectedMeal"></meal-page>
+    <meal-page *ngIf="showMealPage === true" [thisMeal]="selectedMeal" (saveEditSender)="saveUpdate($event)"></meal-page>
     <new-meal *ngIf="showNewMeal === true" (newMealSender)= "saveMeal($event)" (cancelNewSender)="toggleShowNewMeal()"></new-meal>
   </div>
   `

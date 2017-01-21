@@ -1,10 +1,11 @@
 "use strict";
 var Meal = (function () {
     function Meal(newName, newDetails, newCalories) {
-        this._id = Meal._instances.length + 1;
+        this._id = Meal._idCounter;
         this._name = newName;
         this._details = newDetails;
         this._calories = newCalories;
+        Meal._idCounter++;
     }
     Meal.findById = function (targetId) {
         return Meal._instances[targetId - 1];
@@ -39,6 +40,7 @@ var Meal = (function () {
     Meal.prototype.getCalories = function () {
         return this._calories;
     };
+    Meal._idCounter = 1;
     Meal._instances = [];
     return Meal;
 }());

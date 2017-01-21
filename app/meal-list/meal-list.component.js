@@ -12,7 +12,11 @@ var core_1 = require('@angular/core');
 var MealListComponent = (function () {
     function MealListComponent() {
         this.viewMealSender = new core_1.EventEmitter();
+        this.filterBy = "all";
     }
+    MealListComponent.prototype.changeFilter = function (newFilter) {
+        this.filterBy = newFilter;
+    };
     MealListComponent.prototype.viewMeal = function (mealId) {
         this.viewMealSender.emit(mealId);
     };
@@ -27,7 +31,7 @@ var MealListComponent = (function () {
     MealListComponent = __decorate([
         core_1.Component({
             selector: 'meal-list',
-            template: "\n    <table>\n      <thead>\n        <tr>\n          <th>Name</th>\n          <th>Details</th>\n          <th>Calories</th>\n          <th>View</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr *ngFor=\"let mealInstance of mealList\">\n          <td>{{mealInstance.getName()}}</td>\n          <td>{{mealInstance.getDetails()}}</td>\n          <td>{{mealInstance.getCalories()}}</td>\n          <td><a (click)=\"viewMeal(mealInstance.getId())\">View Meal</a></td>\n        </tr>\n      </tbody>\n    </table>\n  "
+            template: "\n    <table>\n      <thead>\n        <tr>\n          <th>Name</th>\n          <th>Details</th>\n          <th>Calories</th>\n          <th>View</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr *ngFor=\"let mealInstance of mealList | calorieFilter:filterBy\">\n          <td>{{mealInstance.getName()}}</td>\n          <td>{{mealInstance.getDetails()}}</td>\n          <td>{{mealInstance.getCalories()}}</td>\n          <td><a (click)=\"viewMeal(mealInstance.getId())\">View Meal</a></td>\n        </tr>\n      </tbody>\n    </table>\n    <button class=\"btn blue darken-3\" (click)=\"changeFilter('high')\"><small>High Calorie Meals</small></button>\n    <button class=\"btn blue darken-3\" (click)=\"changeFilter('low')\"><small>Low Calorie Meals</small></button>\n    <button class=\"btn blue darken-3\" (click)=\"changeFilter('all')\"><small>All Meals</small></button>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], MealListComponent);

@@ -8,22 +8,30 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var meal_model_1 = require("../models/meal.model");
+var core_1 = require('@angular/core');
+var meal_model_1 = require('../models/meal.model');
 var MealPageComponent = (function () {
     function MealPageComponent() {
+        this.showEditForm = false;
     }
+    MealPageComponent.prototype.toggleEditMeal = function () {
+        this.showEditForm = !this.showEditForm;
+    };
+    MealPageComponent.prototype.saveEdit = function () {
+        this.showEditForm = false;
+    };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', meal_model_1.Meal)
+    ], MealPageComponent.prototype, "thisMeal", void 0);
+    MealPageComponent = __decorate([
+        core_1.Component({
+            selector: 'meal-page',
+            template: "\n    <h4>{{thisMeal.getName()}}</h4>\n    <hr>\n    <p>Calories: <span>{{thisMeal.getCalories()}}</span></p>\n    <p>Notes: {{thisMeal.getDetails()}}</p>\n    <br>\n    <button class=\"btn blue darken-2\" (click)=\"toggleEditMeal()\">Edit</button>\n    <edit-meal *ngIf=\"showEditForm === true\" [currentMeal]=\"thisMeal\" (updateMealListener)=\"saveEdit()\"></edit-meal>\n  "
+        }), 
+        __metadata('design:paramtypes', [])
+    ], MealPageComponent);
     return MealPageComponent;
 }());
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", meal_model_1.Meal)
-], MealPageComponent.prototype, "thisMeal", void 0);
-MealPageComponent = __decorate([
-    core_1.Component({
-        selector: 'meal-page',
-        template: "\n    <h4>{{thisMeal.getName()}}</h4>\n    <hr>\n    <p>Calories: <span>{{thisMeal.getCalories()}}</span></p>\n    <p>Notes: {{thisMeal.getDetails()}}</p>\n  "
-    })
-], MealPageComponent);
 exports.MealPageComponent = MealPageComponent;
 //# sourceMappingURL=meal-page.component.js.map
