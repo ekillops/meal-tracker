@@ -6,7 +6,7 @@
 
 ## Description
 
-_A small ember app to track meals in a day._
+_A small Angular app to track meals in a day._
 
 
 ## Setup/Installation Requirements
